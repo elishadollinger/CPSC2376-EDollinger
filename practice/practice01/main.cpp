@@ -70,6 +70,7 @@ int addNumToVec()
 	return vecNum;
 }
 
+//This shows all the choices for the user, prompts them for the choice and returns the choice as an int
 int promptChoice()
 {
     int choice;
@@ -87,30 +88,41 @@ int promptChoice()
 
 int main()
 {
-    std::vector<int> userVec;
+    std::vector<int> userVec;//Empty vector
+    
+    //Sets the user choice to 0 to make the user pick a number 1-6
     int userChoice = 0;
+    
+    //User iterates through this at least once, if they do not enter a number that is 1-6 they go through it again
     while(userChoice < 1 || userChoice > 6)
     {
         userChoice = promptChoice();
     }
+    
+    //While the user has not chosen to exit the program
     while(userChoice != 6)
     {
+        //If the user chooses to add a number to the vector, prompt them for a number using a function and push that number back
         if(userChoice == 1)
         {
 	        userVec.push_back(numAddedToVec());
         }
+        //If the user chooses to print the vector, print the vector using a function that passes the user's vector
         else if(userChoice == 2)
         {
             printVector(userVec);
         }
+        //If the user chooses to double the vector, pass the vector through reference to directly double the vector through the function
         else if(userChoice == 3)
         {
             doubleVector(userVec);
         }
+        //If the user chooses to sum the vector, pass the vector to the "sumVector" function to add all the numbers in the vector together
         else if(userChoice == 4)
         {
             sumVector(userVec);
         }
+        //If the user chooses to find a multiple, prompt the user for a multiple and find the valus in the function that are multiples of the aforementioned multiple using the "printMultiples" function
         else if(userChoice == 5)
         {
             int userMultiple;
@@ -118,11 +130,15 @@ int main()
             std::cin >> userMultiple;
             printMultiples(userVec, userMultiple);
         }
+        //Prompts the user for their choice
         userChoice = promptChoice();
+        
+        //If the user enters an invalid choice, make them enter a valid one
         while(userChoice < 1 || userChoice > 6)
         {
             userChoice = promptChoice();
         }
     }
+    std::cout << "Exiting program..." << std::endl;
 	return 0;
 }
