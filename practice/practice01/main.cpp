@@ -105,7 +105,7 @@ int main()
         //If the user chooses to add a number to the vector, prompt them for a number using a function and push that number back
         if(userChoice == 1)
         {
-	        userVec.push_back(numAddedToVec());
+	        userVec.push_back(addNumToVec());
         }
         //If the user chooses to print the vector, print the vector using a function that passes the user's vector
         else if(userChoice == 2)
