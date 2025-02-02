@@ -11,7 +11,10 @@
 #include <string>
 #include <limits>
 
-
+/*
+    I had to use ChatGPT for this
+    This reads the balance from the file
+ */
 double readBalanceFromFile()
 {
     //Initializes the file
@@ -32,6 +35,10 @@ double readBalanceFromFile()
     return balance;//Returns the balance after it is read out
 }
 
+/*
+    I had to use ChatGPT for this
+    This writes the balance to the file
+ */
 void writeBalanceToFile(double balance)
 {
     //Initializes the file
