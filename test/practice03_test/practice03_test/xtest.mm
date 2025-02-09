@@ -1,32 +1,37 @@
 //
-//  project03_test_cppTests.m
-//  project03_test.cppTests
+//  xtest.m
+//  xtest
 //
-//  Created by Eli Dollinger on 2/7/25.
+//  Created by Eli Dollinger on 2/9/25.
 //
 
 #import <XCTest/XCTest.h>
+#import "practice03_test.hpp"
 
-@interface project03_test_cppTests : XCTestCase
+@interface xtest : XCTestCase
 
 @end
 
-@implementation project03_test_cppTests
+@implementation xtest
 
-- (void)setUp {
+- (void)setUp
+{
     // Put setup code here. This method is called before the invocation of each test method in the class.
 }
 
-- (void)tearDown {
+- (void)tearDown
+{
     // Put teardown code here. This method is called after the invocation of each test method in the class.
 }
 
-- (void)testExample {
-    // This is an example of a functional test case.
-    // Use XCTAssert and related functions to verify your tests produce the correct results.
+- (void)test
+{
+    
 }
 
-- (void)testPerformanceExample {
+- (void)testPerformanceExample
+{
+    // This is an example of a performance test case.
     // This is an example of a performance test case.
     [self measureBlock:^{
         // Put the code you want to measure the time of here.
