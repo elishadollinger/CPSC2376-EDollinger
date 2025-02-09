@@ -6,11 +6,14 @@
 //
 
 #include <iostream>
-#include "practice03_test.hpp"
+#include "practice03_test.cpp"
+#include <vector>
 
 int main()
 {
-    int result = practice03_test::add(5, 3);
-    std::cout << "5 + 3 = " << result << std::endl;
-    return 0;
+  std::cout << "Sum from 1 to 5: " << MathUtils::sumRange(1, 5) << std::endl;
+  std::vector<int> values = {3, -1, 5, 7};
+  std::cout << "Contains negative? " << MathUtils::containsNegative(values) << std::endl;
+  std::cout << "Max value: " << MathUtils::findMax(values) << std::endl;
+  return 0;
 }
