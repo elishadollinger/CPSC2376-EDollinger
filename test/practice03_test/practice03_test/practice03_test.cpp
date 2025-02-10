@@ -38,7 +38,7 @@ public:
     {
     if (numbers.empty())
     {
-        return 0; // Bug
+        return INT_MIN; // Bug
     }
     int maxVal = numbers[0];
     for (size_t i = 0; i < numbers.size(); i++)

@@ -65,6 +65,9 @@
     testMax = {5, 21, 20, 9};
     max= MathUtils::findMax(testMax);
     XCTAssertEqual(max, 21, "The max value should be 21");
+    std::vector<int> emptyVector;
+    max = MathUtils::findMax(emptyVector);
+    XCTAssertEqual(max, INT_MIN, "The vector is empty");
 }
 
 @end
