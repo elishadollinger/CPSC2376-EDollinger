@@ -39,7 +39,7 @@ public:
     {
     if (numbers.empty())
     {
-        return 0; // Bug
+        return INT_MIN; // Bug
     }
     int maxVal = numbers[0];
     //I fixed this bug by changing the for loop to "size_i=0; i<numbers.size(); i++" to ensure that the for loop went through numbers.at(0) to numbers.at(numbers.size()-1)
