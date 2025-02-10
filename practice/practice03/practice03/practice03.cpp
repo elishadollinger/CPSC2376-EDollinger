@@ -28,7 +28,7 @@ public:
     {
       //I fixed this bug by changing the code from "numbers[i]<0" to "numbers[i]>0"
       if (numbers[i] < 0)
-      { // Bug
+      {
         return true;
       }
     }
@@ -37,9 +37,10 @@ public:
    
   static int findMax(const std::vector<int>& numbers)
     {
+    //I fixed this bug by replacing the return "return 0" to "return INT_MIN" to make this more accurate
     if (numbers.empty())
     {
-        return INT_MIN; // Bug
+        return INT_MIN;
     }
     int maxVal = numbers[0];
     //I fixed this bug by changing the for loop to "size_i=0; i<numbers.size(); i++" to ensure that the for loop went through numbers.at(0) to numbers.at(numbers.size()-1)
