@@ -16,7 +16,7 @@ public:
   static int sumRange(int start, int end)
     {
     int sum = 0;
-    for (int i = start; i < end; i++) { // Bug: Off-by-one error
+    for (int i = start; i <= end; i++) { // Bug: Off-by-one error
       sum += i;
     }
     return sum;
@@ -24,8 +24,9 @@ public:
    
   static bool containsNegative(const std::vector<int>& numbers)
     {
-    for (size_t i = 0; i <= numbers.size(); i++) { // Bug
-      if (numbers[i] > 0)
+    for (size_t i = 0; i < numbers.size(); i++)
+    { // Bug
+      if (numbers[i] < 0)
       { // Bug
         return true;
       }
@@ -40,9 +41,9 @@ public:
         return 0; // Bug
     }
     int maxVal = numbers[0];
-    for (size_t i = 1; i <= numbers.size(); i++)
+    for (size_t i = 0; i < numbers.size(); i++)
     { // Bug
-      if (numbers[i] >= maxVal)
+      if (numbers[i] > maxVal)
       { // Bug
         maxVal = numbers[i];
       }

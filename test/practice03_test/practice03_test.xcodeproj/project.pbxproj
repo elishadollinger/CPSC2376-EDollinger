@@ -28,14 +28,14 @@
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
 				practice03_test.cpp,
-				xtest/xtest.mm,
+				xtest.mm,
 			);
 			target = E5F101A02D592AE500883E7A /* xtest */;
 		};
 		E5F101B02D59383F00883E7A /* Exceptions for "practice03_test" folder in "practice03_test" target */ = {
 			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
 			membershipExceptions = (
-				xtest/xtest.mm,
+				xtest.mm,
 			);
 			target = E5F1018C2D5928CB00883E7A /* practice03_test */;
 		};
