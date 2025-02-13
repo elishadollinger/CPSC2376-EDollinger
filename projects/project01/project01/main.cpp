@@ -173,6 +173,7 @@ int main()
 
         if (currentState == GameState::PLAYER_1_WINS)
         {
+            printBoard(gameBoard);
             std::cout << "You win!" << std::endl;
         }
         else if (currentState == GameState::PLAYER_2_WINS)
@@ -186,6 +187,12 @@ int main()
 
         std::cout << "Play again? (0 for Yes, 1 for No): ";
         std::cin >> playing;
+        while(playing != 0 && playing != 1)
+        {
+            std::cout << "Invalid input." << std::endl;
+            std::cout << "Play again? (0 for Yes, 1 for No): ";
+            std::cin >> playing;
+        }
         if (playing == 1)
         {
             break;
