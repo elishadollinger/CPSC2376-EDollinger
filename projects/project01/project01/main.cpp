@@ -1,5 +1,7 @@
 #include <iostream>
 #include <vector>
+#include <limits>
+#include <random>
 
 /*I had to use ChatGPT for this part
  My code was not properly translating from CodeBin to XCode
