@@ -80,7 +80,7 @@ void play(std::vector<std::vector<Token>>& board, bool playerOne)
     while (columnPlacing < 1 || columnPlacing > 7 || board[0][columnPlacing - 1] != Token::EMPTY)
     {
         std::cin.clear();
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Invalid input or column full. Choose a column (1-7): ";
         std::cin >> columnPlacing;
     }
@@ -253,7 +253,7 @@ int main()
         while(playing != 0 && playing != 1)
         {
             std::cin.clear();
-            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+            //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Invalid input." << std::endl;
             std::cout << "Play again? (0 for Yes, 1 for No): ";
             std::cin >> playing;
