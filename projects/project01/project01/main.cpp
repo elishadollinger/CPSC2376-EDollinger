@@ -77,12 +77,13 @@ void play(std::vector<std::vector<Token>>& board, bool playerOne)
         After using ChatGPT, I figured out that it was as simple as ensuring a valid input and that the user did not try to place a token on a filled column
         If this happens, the user is made to enter a token on a partially empty column or is made to enter a number between 1 and 7
      */
-    while (columnPlacing < 1 || columnPlacing > 7 || board[0][columnPlacing - 1] != Token::EMPTY)
+    while(std::cin.fail() || columnPlacing < 1 || columnPlacing > 7 || board[0][columnPlacing - 1] != Token::EMPTY)
     {
         std::cin.clear();
-        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cout << "Invalid input or column full. Choose a column (1-7): ";
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         std::cin >> columnPlacing;
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
     /*
      The for loops here starts at the bottom of the board and goes all the way to the top
@@ -248,14 +249,14 @@ int main()
         //Asks the user if they wanna play again
         std::cout << "Play again? (0 for Yes, 1 for No): ";
         std::cin >> playing;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         //If there is an invalid input, print it to the user and make them enter a new input
-        while(playing != 0 && playing != 1)
+        while(std::cin.fail() || playing < 0 || playing > 1)
         {
             std::cin.clear();
-            //std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cout << "Invalid input." << std::endl;
             std::cout << "Play again? (0 for Yes, 1 for No): ";
+            std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
             std::cin >> playing;
             std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         }
@@ -272,4 +273,3 @@ int main()
     std::cout << "Exiting game..." << std::endl;
     return 0;
 }
-

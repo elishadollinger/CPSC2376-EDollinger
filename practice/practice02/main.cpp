@@ -30,6 +30,7 @@ double readBalanceFromFile()
     //If the file does not exist, set the initial balance to $100
     else
     {
+        std::cout << "Initializing balance with $100..." << std::endl;
         balance = 100.00;
     }
     return balance;//Returns the balance after it is read out
@@ -66,22 +67,21 @@ void checkBalance()
 //Deposits money into the user's account
 void deposit()
 {
-    //Tracking variables
     double balanceInFile = readBalanceFromFile();
     double amountDeposited;
     
     //Prompts the user for the amount being deposited and stores this amount
     std::cout << "Enter the amount being deposited: $";
     std::cin >> amountDeposited;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//Ignore bad input
-    
-    //Makes the user deposit at least one cent
-    while(amountDeposited < 0.01)
+
+    //This checks for invalid input(string input, too low of value, etc)
+    while(std::cin.fail() || amountDeposited < 0.01)
     {
-        std::cout << "Error: Deposit value must be over $0.01 or over." << std::endl;
+        std::cin.clear(); // Clear the error flag
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+        std::cout << "Error: Either string input or a numerical value below $0.01." << std::endl;
         std::cout << "Enter the amount being deposited: $";
-        std::cin >> amountDeposited;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
+        std::cin >> amountDeposited; // Try again for a valid amount
     }
     
     //Adds the amount deposited to the initial balance and writes this new balance to the file
@@ -97,15 +97,16 @@ void withdraw()
     //Asks for the amount being withdrawn and stores this value
     std::cout << "Enter the amount being withdrawn: $";
     std::cin >> amountWithdrawn;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    
-    //If the user tries to withdraw more than they have, make them withdraw a number that is either the same or less than the value in their account
-    while(amountWithdrawn > balanceInFile)
+
+    //This checks for invalid input(string input, too high amount being withdrawn)
+    while(std::cin.fail() || amountWithdrawn > balanceInFile || amountWithdrawn <= 0)
     {
-        std::cout << "Error: Cannot withdraw more than you have." << std::endl;
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Discard invalid input
+        
+        std::cout << "Error: Either string input or an invalid numerical balance." << std::endl;
         std::cout << "Enter the amount being withdrawn: $";
         std::cin >> amountWithdrawn;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
     
     //Subtracts the amount withdrawn from the initial balance and writes this new balance to the file
@@ -126,21 +127,22 @@ int promptUserOptions()
     std::cin >> choice;
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     
-    //If the menu choice is invalid, make the user enter a valid choice
-    while(choice < 1 || choice > 4)
+    //If the menu choice is invalid, make the user enter a valid choice(includes string input)
+    while(std::cin.fail() || choice < 1 || choice > 4)
     {
+        std::cin.clear();
+        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore bad input
         std::cout << "Invalid choice." << std::endl;
         std::cout << "Your choice: ";
         std::cin >> choice;
-        std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
     }
     return choice;//Return the choice
 }
 
 int main()
 {
-    int userChoice;
     std::string userName;
+    int userChoice;
     
     //Asks the user for their name and gets their full name using "getline"
     std::cout << "Enter your name: ";
@@ -148,8 +150,8 @@ int main()
     
     //Greeting
     std::cout << "Welcome to " << userName << "'s Bank Account!" << std::endl;
-    std::cout << "Initializing " << userName << "'s bank account to $100.00...";
-    writeBalanceToFile(readBalanceFromFile());//Initializes the user's bank acount, which will come out to $100.00
+    writeBalanceToFile(readBalanceFromFile());//Initializes the user's bank acount
+    
     std::cout << " " << std::endl;
     
     userChoice = promptUserOptions();
@@ -176,11 +178,7 @@ int main()
         }
         userChoice = promptUserOptions();
     }
-    /*
-     I had to use ChatGPT for this
-     This prevents the file from reading an existing value from the previous code
-    */
-    remove("account_balance.txt");
+    
     std::cout << "Exiting program..." << std::endl;
     return 0;
 }
