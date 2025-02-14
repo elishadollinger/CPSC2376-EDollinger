@@ -125,8 +125,7 @@ int promptUserOptions()
     std::cout << "\t4: Exit the program." << std::endl;
     std::cout << "Your choice: ";
     std::cin >> choice;
-    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-    
+
     //If the menu choice is invalid, make the user enter a valid choice(includes string input)
     while(std::cin.fail() || choice < 1 || choice > 4)
     {
@@ -136,6 +135,7 @@ int promptUserOptions()
         std::cout << "Your choice: ";
         std::cin >> choice;
     }
+    std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n'); // Ignore bad input
     return choice;//Return the choice
 }
 
@@ -182,3 +182,4 @@ int main()
     std::cout << "Exiting program..." << std::endl;
     return 0;
 }
+
