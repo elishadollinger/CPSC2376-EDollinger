@@ -1,9 +1,9 @@
-//
-//  problem3b.cpp
-//  practice04
-//
-//  Created by Eli Dollinger on 2/12/25.
-//
+/*
+    Elisha Dollinger
+    Practice04 - Problem 3B
+    CPSC2376
+    Spring 2025
+ */
 
 /*int main()
 {
