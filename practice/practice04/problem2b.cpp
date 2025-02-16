@@ -9,6 +9,7 @@
 #include <iostream>
 #include <iomanip>
 #include <string>
+#include <limits>
 
 //Check if the user enters an invalid double in this function to make code operation easier
 void validateInput(double& input)
