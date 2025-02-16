@@ -9,17 +9,17 @@
 #include <limits>
 #include <string>
 
-/*
+
 //Default greeting if they choose not to be greeted with a specific name/greeting
 void greet(std::string name = "Guest", std::string prefix = "Hello")
 {
     std::cout << prefix << ", " << name << '!' << std::endl;
 }
- */
+
 
 /*This asks the user for their choice based on the menu
  If their choice is invalid, make them enter a valid choice*/
-/*
+
 int promptMenu()
 {
     int choice = 0;
@@ -58,19 +58,18 @@ std::string promptPrefixOfChoice()
     std::getline(std::cin, greeting);
     return greeting;
 }
- */
+ 
 
-/*
+
 int main()
 {
     int userChoice = promptMenu();
     std::string nameOfChoice;
     std::string prefixOfChoice;
- */
     /*If the user chooses a default greeting, give them that
      If the user wants to be greeted by a certain name, prompt them for said name and greet them by said name
      If the user wants to be greeted by a certain name and prefix, prompt them for both and greet them with both*/
-/*
+
     if(userChoice == 1)
     {
         greet();
@@ -86,4 +85,4 @@ int main()
     }
     return 0;
 }
-*/
+

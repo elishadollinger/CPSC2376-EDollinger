@@ -14,7 +14,7 @@ using namespace std;
 /*If the user wants to convert from fahrenheit to celsius, return the degree in the formula
  Otherwise, defaulty convert from celsius to fahrenheit*/
 
-/*
+
 double convertTemperature(double temp, char scale = 'F')
 {
     if(scale == 'F')
@@ -23,11 +23,11 @@ double convertTemperature(double temp, char scale = 'F')
     }
     return (temp*9/5)+32;
 }
-*/
+
 /*Prompt the user for if they want to convert from celsius to fahrenheit or vice versa
 Then, return this as an "int"*/
 
-/*
+
 int promptTypeOfTemperature()
 {
     int typeOfConversion;
@@ -84,4 +84,4 @@ int main()
     }
     return 0;
 }
-*/
+

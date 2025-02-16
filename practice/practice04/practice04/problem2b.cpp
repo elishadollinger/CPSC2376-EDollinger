@@ -6,7 +6,7 @@
  */
 
 
-/*#include <iostream>
+#include <iostream>
 #include <iomanip>
 #include <string>
 
@@ -22,11 +22,11 @@ void validateInput(double& input)
         std::cin >> input;
     }
     std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
-}*/
+}
 
 /*This template takes the variable of each input
  Then, a list of "if" statements are used to check for the biggest input, inpus that are equal, etc*/
-/*template <typename T>
+template <typename T>
 T findMax(T a, T b, T c)
 {
     if(a > b && a > c)
@@ -62,14 +62,13 @@ T findMax(T a, T b, T c)
     }
     return a;
 }
-*/
 
 /*
     This function prompts the user for if they want to compare numbers or strings
     If they want to compare numbers, make them enter three numbers, validate each number and then put them through the "findMax" function
     If they want to compare strings, make them enter three strings and put the strings through the "findMax" function
  */
-/*
+
 void startMaxFinder()
 {
     int numsOrStrs;
@@ -124,12 +123,12 @@ void startMaxFinder()
         std::cout << "Max value: " << maxVal << std::endl;
     }
 }
-*/
 
-/*
+
+
 int main()
 {
     startMaxFinder();
     return 0;
 }
-*/
+
