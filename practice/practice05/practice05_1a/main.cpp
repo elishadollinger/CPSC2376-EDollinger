@@ -33,6 +33,7 @@ int main()
     /*
         Prints the numbers in the order the user entered them in
         If the user's int is even, add it to "evenSum" to get the sum of all even nums
+        This is done with an iterator, which is done with the conditions inside of the for loop
     */
     std::cout << "Numbers in the order that you entered them in: ";
     for(auto it = userInts.begin(); it != userInts.end(); ++it)
