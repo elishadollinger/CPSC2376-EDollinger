@@ -24,7 +24,7 @@ int main()
         if(std::cin.fail())
         {
             break;
-        }]
+        }
         std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
         userInts.push_back(userInput);
     }
