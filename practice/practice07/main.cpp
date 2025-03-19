@@ -116,7 +116,10 @@ int main()
         std::string type;
         std::string name;
         int id;
-        /*Takes a line and stores the type of employee they are, their id and their name
+        /*I had to use ChatGPT to learn how to use istringstream
+        Before when I was using fstream, my code was not correctly reading
+        istringstream, however, allows for input to be read directly from a file to a line
+        Takes a line and stores the type of employee they are, their id and their name
         Here, we only have three types so we will check for those three types specifically*/
         std::istringstream iss(line);
         iss >> type >> id >> name;
