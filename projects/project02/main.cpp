@@ -1,3 +1,10 @@
+/*
+    Elisha Dollinger
+    Project02
+    CPSC2376
+    Spring 2025
+*/
+
 #include <iostream>
 #include <vector>
 #include <limits>
