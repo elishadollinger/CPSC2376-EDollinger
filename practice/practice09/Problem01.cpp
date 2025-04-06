@@ -1,6 +1,6 @@
 /*
     Elisha Dollinger
-    Practice09 - Problem 02
+    Practice09 - Problem 01
     CPSC2376
     Spring 2025
  */
