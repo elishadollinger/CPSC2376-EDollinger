@@ -7,22 +7,22 @@ which games are out of stock and when games are due, along with keeping track of
 The entities involved are games, customers and rental records.
 
 # Part 2: List of nouns and verbs
-Nouns(classes):
-    -Game
-    -Customer
-    -RentalRecords
-    -Title
-    -Copy
-    -Due date
-    -Inventory
-Verbs(methods):
-    -Return
-    -Rent
-    -View
-    -Check out
-    -Track
-    -Add
-    -Remove
+* Nouns(classes):
+    * Game
+    * Customer
+    * Rental records
+    * Title
+    * Copy
+    * Due date
+    * Inventory
+* Verbs(methods):
+    * Return
+    * Rent
+    * View
+    * Check out
+    * Track
+    * Add
+    * Remove
     
 # Part 3: Designing 3 classes
 
