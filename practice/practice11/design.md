@@ -25,61 +25,61 @@ The entities involved are games, customers and rental records.
     * Remove
     
 # Part 3: Designing 3 classes
-
+```
 #include <iostream>
 #include <vector>
 #include <string>
 
-* class Game
-* {
-   * private:
-        * std::string gameTitle;
-        * int totalCopies;
-        * int availableCopies;
-    * public:
-        * Game(std::string gameTitle, int totalCopies, int availableCopies) : gameTitle(gameTitle), totalCopies(totalCopies), availableCopies(availableCopies) {}
-        * std::string getTitle() const;
-        * int checkTotalCopies() const;
-        * int checkAvailableCopies() const;
+class Game
+{
+   private:
+        std::string gameTitle;
+        int totalCopies;
+        int availableCopies;
+    public:
+        Game(std::string gameTitle, int totalCopies, int availableCopies) : gameTitle(gameTitle), totalCopies(totalCopies), availableCopies(availableCopies) {}
+        std::string getTitle() const;
+        int checkTotalCopies() const;
+        int checkAvailableCopies() const;
         
-        * void checkOutCopy();
-        * void returnCopy();
-* };
+        void checkOutCopy();
+        void returnCopy();
+};
 
-* class Customer
-* {
-    * private:
-        * std::string customerName;
-        * std::vector<std::string> rentedGames;
-    * public:
-        * Customer(std::string customerName, std::vector<std::string> rentedGames) : customerName(customerName), rentedGames(rentedGames) {}
+class Customer
+{
+    private:
+        std::string customerName;
+        std::vector<std::string> rentedGames;
+    public:
+        Customer(std::string customerName, std::vector<std::string> rentedGames) : customerName(customerName), rentedGames(rentedGames) {}
         
-        * std::string getName() const;
-        * std::vector<std::string> getRentedGames() const;
+        std::string getName() const;
+        std::vector<std::string> getRentedGames() const;
         
-        * void checkOutGame(const std::string& game);
-        * void returnGame(const std::string& game);
+        void checkOutGame(const std::string& game);
+        void returnGame(const std::string& game);
         
 };
 
-* class RentalRecords
-* {
-    * private:
-        * std::string dueDate;
-        * bool pastDue;
-        * bool isAvailable;
-        * bool isReturned;
-    * public:
-        * RentalRecords(std::string dueDate, bool pastDue, bool isAvailable, bool isReturned) : dueDate(dueDate), pastDue(pastDue), isAvailable(isAvailable), isReturned(isReturned) {}
+class RentalRecords
+{
+    private:
+        std::string dueDate;
+        bool pastDue;
+        bool isAvailable;
+        bool isReturned;
+   public:
+        RentalRecords(std::string dueDate, bool pastDue, bool isAvailable, bool isReturned) : dueDate(dueDate), pastDue(pastDue), isAvailable(isAvailable), isReturned(isReturned) {}
         
-        * bool checkPastDue() const;
-        * bool checkAvailable() const;
-        * bool checkIfGameReturned() const;
+        bool checkPastDue() const;
+        bool checkAvailable() const;
+        bool checkIfGameReturned() const;
         
-        * void markReturned();
-        * void updateDueDate(std::string& dueDate);
+        void markReturned();
+        void updateDueDate(std::string& dueDate);
 };
-
+```
 # Part 4: Draw a class diagram using mermaid
 ```mermaid
 classDiagram
