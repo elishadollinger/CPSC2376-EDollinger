@@ -7,38 +7,37 @@ which games are out of stock and when games are due, along with keeping track of
 The entities involved are games, customers and rental records.
 
 # Part 2: List of nouns and verbs
-Nouns(classes):
-    -Game
-    -Customer
-    -RentalRecords
-    -Title
-    -Copy
-    -Due date
-    -Inventory
-Verbs(methods):
-    -Return
-    -Rent
-    -View
-    -Check out
-    -Track
-    -Add
-    -Remove
+* Nouns(classes):
+    * Game
+    * Customer
+    * Rental records
+    * Title
+    * Copy
+    * Due date
+    * Inventory
+* Verbs(methods):
+    * Return
+    * Rent
+    * View
+    * Check out
+    * Track
+    * Add
+    * Remove
     
 # Part 3: Designing 3 classes
-
+```
 #include <iostream>
 #include <vector>
 #include <string>
 
 class Game
 {
-    private:
+   private:
         std::string gameTitle;
         int totalCopies;
         int availableCopies;
     public:
-        Game(std::string gameTitle, int totalCopies, int availableCopies) : 
-        gameTitle(gameTitle), totalCopies(totalCopies), availableCopies(availableCopies) {}
+        Game(std::string gameTitle, int totalCopies, int availableCopies) : gameTitle(gameTitle), totalCopies(totalCopies), availableCopies(availableCopies) {}
         std::string getTitle() const;
         int checkTotalCopies() const;
         int checkAvailableCopies() const;
@@ -53,8 +52,7 @@ class Customer
         std::string customerName;
         std::vector<std::string> rentedGames;
     public:
-        Customer(std::string customerName, std::vector<std::string> rentedGames)
-        : customerName(customerName), rentedGames(rentedGames) {}
+        Customer(std::string customerName, std::vector<std::string> rentedGames) : customerName(customerName), rentedGames(rentedGames) {}
         
         std::string getName() const;
         std::vector<std::string> getRentedGames() const;
@@ -71,9 +69,8 @@ class RentalRecords
         bool pastDue;
         bool isAvailable;
         bool isReturned;
-    public:
-        RentalRecords(std::string dueDate, bool pastDue, bool isAvailable, bool isReturned) :
-        dueDate(dueDate), pastDue(pastDue), isAvailable(isAvailable), isReturned(isReturned) {}
+   public:
+        RentalRecords(std::string dueDate, bool pastDue, bool isAvailable, bool isReturned) : dueDate(dueDate), pastDue(pastDue), isAvailable(isAvailable), isReturned(isReturned) {}
         
         bool checkPastDue() const;
         bool checkAvailable() const;
@@ -82,7 +79,7 @@ class RentalRecords
         void markReturned();
         void updateDueDate(std::string& dueDate);
 };
-
+```
 # Part 4: Draw a class diagram using mermaid
 ```mermaid
 classDiagram
