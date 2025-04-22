@@ -19,12 +19,14 @@ int main() {
         SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 800, 600, 0);
     SDL_Renderer* renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
  
-    SDL_Rect rect = {100, 100, 50, 50};
+    
     int dx = 4, dy = 3;
  
     bool running = true;
     SDL_Event e;
- 
+    bool isSpaceDown = false;
+    int x = 0;
+    
     while (running)
     {
         while (SDL_PollEvent(&e))
@@ -33,18 +35,40 @@ int main() {
                 running = false;
             if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_ESCAPE)
                 running = false;
+            if (e.type == SDL_KEYDOWN && e.key.keysym.sym == SDLK_SPACE)
+                isSpaceDown = true;
+            if (e.type == SDL_KEYUP && e.key.keysym.sym == SDLK_SPACE)
+                isSpaceDown = false;
+            if(e.type == SDL_MOUSEMOTION)
+            {
+                x = e.motion.x;
+            }
         }
- 
+        
+        SDL_Rect rect = {x, 100, 50, 50};
+        
         rect.x += dx;
         rect.y += dy;
  
         if (rect.x < 0 || rect.x + rect.w > 800) dx *= -1;
         if (rect.y < 0 || rect.y + rect.h > 600) dy *= -1;
  
+        if(isSpaceDown)
+        {
+            
+        }
+        
         SDL_SetRenderDrawColor(renderer, 0, 0, 0, 255); // black background
         SDL_RenderClear(renderer);
  
-        SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // red rectangle
+        if(isSpaceDown)
+        {
+            SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255); // red rectangle
+        }
+        else
+        {
+            SDL_SetRenderDrawColor(renderer, 255, 0, 0, 255); // red rectangle
+        }
         SDL_RenderFillRect(renderer, &rect);
  
         SDL_RenderPresent(renderer);
