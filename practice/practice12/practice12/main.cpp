@@ -1,4 +1,10 @@
 #define SDL_MAIN_HANDLED
+
+/*
+    I had to use ChatGPT to change and include this part
+    When i had SDL2.h/SDL.h, nothing was working on XCode
+    However, when I switched to this, my xcode started working
+ */
 #include <SDL.h>
 #include <iostream>
  
