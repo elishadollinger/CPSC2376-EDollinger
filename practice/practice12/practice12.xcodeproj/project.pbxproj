@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E5D73D422DADC46C001454BD /* libfmt.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D73D412DADC46C001454BD /* libfmt.a */; };
+		E5D419FA2DB7F851000374DD /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D419F92DB7F851000374DD /* libSDL2-2.0.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -23,6 +23,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		E5D419F92DB7F851000374DD /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../../../opt/homebrew/Cellar/sdl2/2.32.4/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 		E5D73D362DADBECD001454BD /* practice12 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = practice12; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5D73D412DADC46C001454BD /* libfmt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfmt.a; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -36,11 +37,11 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E5D73D332DADBECD001454BD /* Frameworks */ = {
+		E5D419F82DB7F7BD000374DD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5D73D422DADC46C001454BD /* libfmt.a in Frameworks */,
+				E5D419FA2DB7F851000374DD /* libSDL2-2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,6 +68,7 @@
 		E5D73D402DADC133001454BD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E5D419F92DB7F851000374DD /* libSDL2-2.0.0.dylib */,
 				E5D73D412DADC46C001454BD /* libfmt.a */,
 			);
 			name = Frameworks;
@@ -80,8 +82,8 @@
 			buildConfigurationList = E5D73D3D2DADBECD001454BD /* Build configuration list for PBXNativeTarget "practice12" */;
 			buildPhases = (
 				E5D73D322DADBECD001454BD /* Sources */,
-				E5D73D332DADBECD001454BD /* Frameworks */,
 				E5D73D342DADBECD001454BD /* CopyFiles */,
+				E5D419F82DB7F7BD000374DD /* Frameworks */,
 			);
 			buildRules = (
 			);
@@ -193,8 +195,8 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = "/Users/elidollinger/vcpkg/installed/arm64-osx/include/**";
-				"LIBRARY_SEARCH_PATHS[arch=*]" = "/Users/elidollinger/vcpkg/installed/arm64-osx/lib\n";
+				"HEADER_SEARCH_PATHS[arch=*]" = "/opt/homebrew/include/SDL2/**";
+				"LIBRARY_SEARCH_PATHS[arch=*]" = /opt/homebrew/lib;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
@@ -265,6 +267,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/opt/homebrew/Cellar/sdl2/2.32.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				delete = "";
@@ -278,6 +281,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
+					/opt/homebrew/Cellar/sdl2/2.32.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				delete = "";
