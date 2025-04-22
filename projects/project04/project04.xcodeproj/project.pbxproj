@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E5D419FA2DB7F851000374DD /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5D419F92DB7F851000374DD /* libSDL2-2.0.0.dylib */; };
+		E5C0223D2DB809A100D55D4D /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C0223C2DB809A100D55D4D /* libSDL2-2.0.0.dylib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E5D73D342DADBECD001454BD /* CopyFiles */ = {
+		E5C0222F2DB8089100D55D4D /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = /usr/share/man/man1/;
@@ -23,53 +23,51 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		E5D419F92DB7F851000374DD /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../../../opt/homebrew/Cellar/sdl2/2.32.4/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
-		E5D73D362DADBECD001454BD /* practice12 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = practice12; sourceTree = BUILT_PRODUCTS_DIR; };
-		E5D73D412DADC46C001454BD /* libfmt.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libfmt.a; sourceTree = "<group>"; };
+		E5C022312DB8089100D55D4D /* project04 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = project04; sourceTree = BUILT_PRODUCTS_DIR; };
+		E5C0223C2DB809A100D55D4D /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../../../opt/homebrew/Cellar/sdl2/2.32.4/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		E5D73D382DADBECD001454BD /* practice12 */ = {
+		E5C022332DB8089100D55D4D /* project04 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			path = practice12;
+			path = project04;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		E5D419F82DB7F7BD000374DD /* Frameworks */ = {
+		E5C0222E2DB8089100D55D4D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5D419FA2DB7F851000374DD /* libSDL2-2.0.0.dylib in Frameworks */,
+				E5C0223D2DB809A100D55D4D /* libSDL2-2.0.0.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		E5D73D2D2DADBECD001454BD = {
+		E5C022282DB8089100D55D4D = {
 			isa = PBXGroup;
 			children = (
-				E5D73D382DADBECD001454BD /* practice12 */,
-				E5D73D402DADC133001454BD /* Frameworks */,
-				E5D73D372DADBECD001454BD /* Products */,
+				E5C022332DB8089100D55D4D /* project04 */,
+				E5C0223B2DB809A100D55D4D /* Frameworks */,
+				E5C022322DB8089100D55D4D /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		E5D73D372DADBECD001454BD /* Products */ = {
+		E5C022322DB8089100D55D4D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				E5D73D362DADBECD001454BD /* practice12 */,
+				E5C022312DB8089100D55D4D /* project04 */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		E5D73D402DADC133001454BD /* Frameworks */ = {
+		E5C0223B2DB809A100D55D4D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E5D419F92DB7F851000374DD /* libSDL2-2.0.0.dylib */,
-				E5D73D412DADC46C001454BD /* libfmt.a */,
+				E5C0223C2DB809A100D55D4D /* libSDL2-2.0.0.dylib */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -77,63 +75,63 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		E5D73D352DADBECD001454BD /* practice12 */ = {
+		E5C022302DB8089100D55D4D /* project04 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E5D73D3D2DADBECD001454BD /* Build configuration list for PBXNativeTarget "practice12" */;
+			buildConfigurationList = E5C022382DB8089100D55D4D /* Build configuration list for PBXNativeTarget "project04" */;
 			buildPhases = (
-				E5D73D322DADBECD001454BD /* Sources */,
-				E5D73D342DADBECD001454BD /* CopyFiles */,
-				E5D419F82DB7F7BD000374DD /* Frameworks */,
+				E5C0222D2DB8089100D55D4D /* Sources */,
+				E5C0222E2DB8089100D55D4D /* Frameworks */,
+				E5C0222F2DB8089100D55D4D /* CopyFiles */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				E5D73D382DADBECD001454BD /* practice12 */,
+				E5C022332DB8089100D55D4D /* project04 */,
 			);
-			name = practice12;
+			name = project04;
 			packageProductDependencies = (
 			);
-			productName = practice12;
-			productReference = E5D73D362DADBECD001454BD /* practice12 */;
+			productName = project04;
+			productReference = E5C022312DB8089100D55D4D /* project04 */;
 			productType = "com.apple.product-type.tool";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		E5D73D2E2DADBECD001454BD /* Project object */ = {
+		E5C022292DB8089100D55D4D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastUpgradeCheck = 1620;
 				TargetAttributes = {
-					E5D73D352DADBECD001454BD = {
+					E5C022302DB8089100D55D4D = {
 						CreatedOnToolsVersion = 16.2;
 					};
 				};
 			};
-			buildConfigurationList = E5D73D312DADBECD001454BD /* Build configuration list for PBXProject "practice12" */;
+			buildConfigurationList = E5C0222C2DB8089100D55D4D /* Build configuration list for PBXProject "project04" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = E5D73D2D2DADBECD001454BD;
+			mainGroup = E5C022282DB8089100D55D4D;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = E5D73D372DADBECD001454BD /* Products */;
+			productRefGroup = E5C022322DB8089100D55D4D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E5D73D352DADBECD001454BD /* practice12 */,
+				E5C022302DB8089100D55D4D /* project04 */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		E5D73D322DADBECD001454BD /* Sources */ = {
+		E5C0222D2DB8089100D55D4D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -143,7 +141,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		E5D73D3B2DADBECD001454BD /* Debug */ = {
+		E5C022362DB8089100D55D4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -195,7 +193,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				"HEADER_SEARCH_PATHS[arch=*]" = /opt/homebrew/include/SDL2;
+				"HEADER_SEARCH_PATHS[arch=*]" = "/opt/homebrew/include/SDL2/**";
 				"LIBRARY_SEARCH_PATHS[arch=*]" = /opt/homebrew/lib;
 				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
 				MACOSX_DEPLOYMENT_TARGET = 15.2;
@@ -206,7 +204,7 @@
 			};
 			name = Debug;
 		};
-		E5D73D3C2DADBECD001454BD /* Release */ = {
+		E5C022372DB8089100D55D4D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -260,56 +258,52 @@
 			};
 			name = Release;
 		};
-		E5D73D3E2DADBECD001454BD /* Debug */ = {
+		E5C022392DB8089100D55D4D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
 					/opt/homebrew/Cellar/sdl2/2.32.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				delete = "";
 			};
 			name = Debug;
 		};
-		E5D73D3F2DADBECD001454BD /* Release */ = {
+		E5C0223A2DB8089100D55D4D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)",
 					/opt/homebrew/Cellar/sdl2/2.32.4/lib,
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				delete = "";
 			};
 			name = Release;
 		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		E5D73D312DADBECD001454BD /* Build configuration list for PBXProject "practice12" */ = {
+		E5C0222C2DB8089100D55D4D /* Build configuration list for PBXProject "project04" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E5D73D3B2DADBECD001454BD /* Debug */,
-				E5D73D3C2DADBECD001454BD /* Release */,
+				E5C022362DB8089100D55D4D /* Debug */,
+				E5C022372DB8089100D55D4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E5D73D3D2DADBECD001454BD /* Build configuration list for PBXNativeTarget "practice12" */ = {
+		E5C022382DB8089100D55D4D /* Build configuration list for PBXNativeTarget "project04" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E5D73D3E2DADBECD001454BD /* Debug */,
-				E5D73D3F2DADBECD001454BD /* Release */,
+				E5C022392DB8089100D55D4D /* Debug */,
+				E5C0223A2DB8089100D55D4D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = E5D73D2E2DADBECD001454BD /* Project object */;
+	rootObject = E5C022292DB8089100D55D4D /* Project object */;
 }
