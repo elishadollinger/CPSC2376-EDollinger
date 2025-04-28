@@ -1,181 +1,111 @@
+// game.cpp
 #include "Game.h"
+#include <SDL2_gfxPrimitives.h>
 
-
-Game::Game(int boardSize)
-    : boardSize(boardSize), board(boardSize, std::vector<Cell>(boardSize, BLANK))
+Game::Game(Token currentToken, bool userOne)
+    : currentToken(currentToken), userOne(userOne), board(6, std::vector<Token>(7, Token::EMPTY))
 {
 }
 
-bool Game::isFull() const {
-    for (const auto& row : board) {
-        for (auto cell : row) {
-            if (cell == BLANK)
-                return false;
+void Game::play(int row, int col)
+{
+    if (row < 0 || row >= 6 || col < 0 || col >= 7)
+        return; // out of bounds
+    if (board[row][col] != Token::EMPTY)
+        return; // already filled
+
+    board[row][col] = userOne ? Token::PLAYER_1 : Token::PLAYER_2;
+    userOne = !userOne; // Switch player
+}
+
+
+bool Game::getUserOne() const
+{
+    return userOne;
+}
+
+bool Game::checkWin(Token player) const
+{
+    for (int i = 0; i < board.size(); i++)
+    {
+        for (int j = 0; j < board[i].size(); j++)
+        {
+            if (j <= 3 && board[i][j] == player && board[i][j+1] == player && board[i][j+2] == player && board[i][j+3] == player)
+                return true;
+            if (i <= 2 && board[i][j] == player && board[i+1][j] == player && board[i+2][j] == player && board[i+3][j] == player)
+                return true;
+            if (i <= 2 && j <= 3 && board[i][j] == player && board[i+1][j+1] == player && board[i+2][j+2] == player && board[i+3][j+3] == player)
+                return true;
+            if (i >= 3 && j <= 3 && board[i][j] == player && board[i-1][j+1] == player && board[i-2][j+2] == player && board[i-3][j+3] == player)
+                return true;
         }
     }
-    return true;
+    return false;
 }
 
-void Game::horizontalBar() const {
-    std::cout << " +";
-    for (int col = 0; col < boardSize; ++col) {
-        std::cout << "---+";
+bool Game::columnEmpty(int columnIndex) const
+{
+    return board[0][columnIndex] != Token::EMPTY;
+}
+
+Game::Status Game::gameStatus() const
+{
+    if (checkWin(Token::PLAYER_1)) return Status::PLAYER_1_WINS;
+    if (checkWin(Token::PLAYER_2)) return Status::PLAYER_2_WINS;
+    for (int i = 0; i < board[0].size(); i++)
+    {
+        if (board[0][i] == Token::EMPTY) return Status::ONGOING;
     }
-    std::cout << "\n";
+    return Status::DRAW;
 }
 
-int Game::moveCount()
+void Game::reset()
 {
-    int sum = 0;
-    for (int row = 0; row < boardSize; ++row)
-        for (int col = 0; col < boardSize; ++col)
-            sum += board[row][col] != BLANK;
-    return sum;
+    for (auto& row : board)
+        for (auto& cell : row)
+            cell = Token::EMPTY;
+    userOne = true;
 }
 
-
-void Game::draw(Engine* e,int r, int c)
+void Game::draw(SDL_Renderer* renderer) const
 {
-    int tokenRadius = 30;
-    Cell current = getCurrentToken();
-    for (int row = 0; row < boardSize; ++row) {
-        for (int col = 0; col < boardSize; ++col) {
-            int cx = 50+100*col;
-            int cy = 50+100*row;
-            e->drawRectangle(cx, cy, 90, 90, { 100,60,200,255 });
-            if (board[row][col] != BLANK)
-                e->drawCircle(cx+5, cy+5, tokenRadius, { 0,0,0,64 });
+    const int CELL_SIZE = 100;
+    for (int i = 0; i < board.size(); ++i)
+    {
+        for (int j = 0; j < board[i].size(); ++j)
+        {
+            SDL_Rect rect = { j * CELL_SIZE, i * CELL_SIZE, CELL_SIZE, CELL_SIZE };
+            SDL_SetRenderDrawColor(renderer, 200, 200, 200, 255);
+            SDL_RenderDrawRect(renderer, &rect);
 
-            if (board[row][col] == X)
-                e->drawCircle(cx, cy, tokenRadius, { 0,0,0,255 });
-            else if (board[row][col] == O)
-                e->drawCircle(cx, cy, tokenRadius, { 255,255,255,255 });
-            else if (r == row && c == col)
+            if (board[i][j] == Token::PLAYER_1)
             {
-                if(current==X) e->drawCircle(cx, cy, tokenRadius, { 0,0,0,128 });
-                else e->drawCircle(cx, cy, tokenRadius, { 255,255,255,125 });
+                filledCircleRGBA(renderer, j * CELL_SIZE + CELL_SIZE/2, i * CELL_SIZE + CELL_SIZE/2, CELL_SIZE/2 - 10, 0, 0, 255, 255);
+            }
+            else if (board[i][j] == Token::PLAYER_2)
+            {
+                filledCircleRGBA(renderer, j * CELL_SIZE + CELL_SIZE/2, i * CELL_SIZE + CELL_SIZE/2, CELL_SIZE/2 - 10, 255, 0, 0, 255);
             }
         }
     }
 }
-void Game::printBoard() const {
-    // Print column numbers
-    std::cout << "   ";
-    for (int col = 1; col <= boardSize; ++col) {
-        std::cout << col << "   ";
-    }
-    std::cout << "\n";
 
-    for (int row = 0; row < boardSize; ++row) {
-        horizontalBar();
-        std::cout << row + 1 << "|";
-        for (int col = 0; col < boardSize; ++col) {
-            char symbol = ' ';
-            if (board[row][col] == X)
-                symbol = 'X';
-            else if (board[row][col] == O)
-                symbol = 'O';
-            std::cout << " " << symbol << " |";
+std::ostream& operator<<(std::ostream& os, const Game& conFour)
+{
+    for (int i = 0; i < conFour.board.size(); i++)
+    {
+        for (int j = 0; j < conFour.board[i].size(); j++)
+        {
+            if (conFour.board[i][j] == Game::Token::EMPTY)
+                os << ".";
+            else if (conFour.board[i][j] == Game::Token::PLAYER_1)
+                os << "O";
+            else if (conFour.board[i][j] == Game::Token::PLAYER_2)
+                os << "X";
+            os << " ";
         }
-        std::cout << "\n";
+        os << "\n";
     }
-    horizontalBar();
-}
-
-Game::Cell Game::getCurrentToken() const {
-    int count = 0;
-    for (const auto& row : board) {
-        for (auto cell : row) {
-            if (cell != BLANK)
-                ++count;
-        }
-    }
-    return (count % 2 == 0) ? X : O;
-}
-
-bool Game::play(int row, int col) {
-    // Check for out-of-bound indices.
-    if (row < 0 || row >= boardSize || col < 0 || col >= boardSize)
-        return false;
-
-    if (board[row][col] != BLANK)
-        return false;
-
-    board[row][col] = getCurrentToken();
-    return true;
-}
-
-Game::GameStatus Game::getStatus() const {
-    // Horizontal check:
-    for (int row = 0; row < boardSize; ++row) {
-        for (int col = 0; col < boardSize - 4; ++col) {
-            if (board[row][col] != BLANK) {
-                Cell token = board[row][col];
-                bool isWinner = true;
-                for (int i = 1; i < 5; i++) {
-                    if (board[row][col + i] != token) {
-                        isWinner = false;
-                        break;
-                    }
-                }
-                if (isWinner)
-                    return token == X ? X_WON : O_WON;
-            }
-        }
-    }
-
-    // Vertical check:
-    for (int row = 0; row < boardSize - 4; ++row) {
-        for (int col = 0; col < boardSize; ++col) {
-            if (board[row][col] != BLANK) {
-                Cell token = board[row][col];
-                bool isWinner = true;
-                for (int i = 1; i < 5; i++) {
-                    if (board[row + i][col] != token) {
-                        isWinner = false;
-                        break;
-                    }
-                }
-                if (isWinner)
-                    return token == X ? X_WON : O_WON;
-            }
-        }
-    }
-
-    // Diagonal check (top-left to bottom-right) and anti-diagonal check (bottom-left to top-right):
-    for (int row = 0; row < boardSize - 4; ++row) {
-        for (int col = 0; col < boardSize - 4; ++col) {
-            // Top-left to bottom-right.
-            if (board[row][col] != BLANK) {
-                Cell token = board[row][col];
-                bool isWinner = true;
-                for (int i = 1; i < 5; i++) {
-                    if (board[row + i][col + i] != token) {
-                        isWinner = false;
-                        break;
-                    }
-                }
-                if (isWinner)
-                    return token == X ? X_WON : O_WON;
-            }
-            // Bottom-left to top-right.
-            if (board[row + 4][col] != BLANK) {
-                Cell token = board[row + 4][col];
-                bool isWinner = true;
-                for (int i = 1; i < 5; i++) {
-                    if (board[row + 4 - i][col + i] != token) {
-                        isWinner = false;
-                        break;
-                    }
-                }
-                if (isWinner)
-                    return token == X ? X_WON : O_WON;
-            }
-        }
-    }
-
-    if (isFull())
-        return DRAW;
-
-    return ONGOING;
+    os << "\n";
+    return os;
 }

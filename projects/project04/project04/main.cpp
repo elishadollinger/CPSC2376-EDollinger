@@ -1,3 +1,4 @@
+// main.cpp
 #define SDL_MAIN_HANDLED
 #include <iostream>
 #include <SDL.h>
@@ -6,60 +7,51 @@
 
 #include "Game.h"
 #include "Engine.h"
-#include "main.h"
+
+const int cellSize = 100;
+const int width = 700;
+const int height = 600;
 
 void drawWinScreen(Game& game, Engine& engine)
 {
-    auto status = game.getStatus();
+    auto status = game.gameStatus();
     std::string msg;
     SDL_Color bgColor;
     SDL_Color textColor;
-    if (status == Game::X_WON)
-    {
-        msg = "X WON IN "+std::to_string(game.moveCount()) + " MOVES!!!";
-        bgColor = { 0,0,0,200 };
-        textColor = { 255,255,255,255 };
-    }
 
-    else if (status == Game::O_WON)
+    if (status == Game::Status::PLAYER_1_WINS)
     {
-        msg = "O WON IN " + std::to_string(game.moveCount()) + " MOVES!!!";
-        bgColor = { 255,255,255,200 };
-        textColor = { 0,0,0,255 };
+        msg = "Player 1 wins!";
+        bgColor = { 0, 0, 0, 200 };
+        textColor = { 255, 255, 255, 255 };
+    }
+    else if (status == Game::Status::PLAYER_2_WINS)
+    {
+        msg = "Player 2 wins!";
+        bgColor = { 255, 255, 255, 200 };
+        textColor = { 0, 0, 0, 255 };
     }
     else
     {
-        msg = "DRAW";
-        bgColor = { 128,128,128,200 };
-        textColor = { 255,255,255,255 };
+        msg = "Draw!";
+        bgColor = { 128, 128, 128, 200 };
+        textColor = { 255, 255, 255, 255 };
     }
-    engine.drawRectangle(350, 350, 700, 700, bgColor);
-    engine.drawText(msg, 350, 350, textColor);
-    engine.drawText("Press space to play again.", 350, 650, textColor);
+
+    engine.drawRectangle(width/2, height/2, 600, 200, bgColor);
+
+    engine.drawText(msg, width/2, height/2 - 30, textColor);
+    engine.drawText("Press SPACE to restart", width/2, height/2 + 30, textColor);
 }
 
-int main() {
 
-    Engine engine("My Game", 800, 600, "/System/Library/Fonts/Supplemental/Arial.ttf", 24, "sound.wav");
-
-   /* while (true)
-    {
-        engine.clear();
-        engine.drawCircle(300, 300, 100);
-        engine.drawRectangle(300, 300);
-        engine.drawText("Hello, SDL2!", 300, 300);
-        engine.flip();
-    }*/
-
-
-
-
-
+int main()
+{
+    Engine engine("My Game", width, height, "/System/Library/Fonts/Supplemental/Arial.ttf", 24, "sound.wav");
 
     Game game;
     bool running = true;
     SDL_Event event;
-    int row = 0;
     int col = 0;
 
     while (running)
@@ -72,52 +64,36 @@ int main() {
                 if (event.key.keysym.sym == SDLK_ESCAPE) {
                     running = false;
                 }
-                if (event.key.keysym.sym == SDLK_SPACE)
-                {
-
-                    if (game.getStatus() != Game::ONGOING) game=Game();
+                else if (event.key.keysym.sym == SDLK_SPACE) {
+                    if (game.gameStatus() != Game::Status::ONGOING) {
+                        game = Game();
+                    }
                 }
             }
-
             else if (event.type == SDL_MOUSEBUTTONDOWN)
             {
-                int col = event.button.x / 100;
-                int row = event.button.y / 100;
-                if (game.getStatus() == Game::ONGOING)
+                if (game.gameStatus() == Game::Status::ONGOING)
                 {
-                    game.play(row, col);
+                    int mouseX = event.button.x;
+                    int mouseY = event.button.y;
+                    int clickedCol = mouseX / cellSize;
+                    int clickedRow = mouseY / cellSize;
+                    game.play(clickedRow, clickedCol);
                     engine.playSound();
                 }
-                
-                //x = event.motion.x;
             }
 
-            else if (event.type == SDL_MOUSEMOTION)
-            {
-                col = event.motion.x / 100;
-                row = event.motion.y / 100;
-                if (game.getStatus() != Game::ONGOING)
-                {
-                    col = -1;
-                    row = -1;
-                }
-                //x = event.motion.x;
-            }
         }
 
-
-        
-
         engine.clear();
-        game.draw(&engine,row,col);
+        game.draw(engine.getRenderer());
 
-        if (game.getStatus() != Game::ONGOING) drawWinScreen(game, engine);
-
+        if (game.gameStatus() != Game::Status::ONGOING) {
+            drawWinScreen(game, engine);
+        }
 
         engine.flip();
     }
-        
-
 
     return 0;
 }

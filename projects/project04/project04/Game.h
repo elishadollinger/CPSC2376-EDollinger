@@ -1,40 +1,33 @@
-#pragma once
+// game.h
+#ifndef GAME_H
+#define GAME_H
 
-
-#include <vector>
 #include <iostream>
-#include "Engine.h"
+#include <vector>
+#include <SDL.h>
 
-class Game {
-public:
-    // Simple (unscoped) enums now, scoped inside Game.
-    enum Cell { BLANK, X, O };
-    enum GameStatus { ONGOING, X_WON, O_WON, DRAW };
-
-    // Constructor that sets up the board.
-    Game(int boardSize = 7);
-
-    // Prints the board to the console.
-    void printBoard() const;
-
-    // Attempts to play a move at (row, col). Returns false if move is illegal.
-    bool play(int row, int col);
-
-    // Returns the current status of the game.
-    GameStatus getStatus() const;
-
-    // Returns the current player's token.
-    Cell getCurrentToken() const;
-
-    void draw(Engine* e, int row = -1, int col = -1);
-
-    int moveCount();
-
+class Game
+{
 private:
-    std::vector<std::vector<Cell>> board;
-    int boardSize;
+    enum class Token { EMPTY, PLAYER_1, PLAYER_2 };
+    Token currentToken;
+    std::vector<std::vector<Token>> board;
+    bool userOne = true;
 
-    // Helper functions.
-    bool isFull() const;
-    void horizontalBar() const;
+public:
+    enum class Status { ONGOING, PLAYER_1_WINS, PLAYER_2_WINS, DRAW };
+
+    Game(Token currentToken = Token::EMPTY, bool userOne = true);
+
+    void play(int row, int col);
+    bool getUserOne() const;
+    bool checkWin(Token player) const;
+    bool columnEmpty(int columnIndex) const;
+    Status gameStatus() const;
+    void reset();
+    void draw(SDL_Renderer* renderer) const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Game& conFour);
 };
+
+#endif
