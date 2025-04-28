@@ -3,9 +3,6 @@
 #include <SDL.h>
 #include <SDL_ttf.h>
 #include <SDL2_gfxPrimitives.h>
-#include <unistd.h>
-#include <limits.h>
-
 
 #include "Game.h"
 #include "Engine.h"
@@ -50,12 +47,6 @@ void drawWinScreen(Game& game, Engine& engine)
 
 int main()
 {
-    char cwd[PATH_MAX];
-    if (getcwd(cwd, sizeof(cwd)) != nullptr)
-    {
-        std::cout << "Current working directory: " << cwd << std::endl;
-    }
-    
     Engine engine("My Game", width, height, "/System/Library/Fonts/Supplemental/Arial.ttf", 24, "sound.wav");
 
     Game game;
