@@ -61,6 +61,7 @@ void drawWinScreen(Game& game, Engine& engine)
 
 int main()
 {
+    std::cout << "This is meant to operate in XCode; therefore, some of it may not work on VSCode." << std::endl;
     //Include font and sound
     Engine engine("My Game", width, height, "/System/Library/Fonts/Supplemental/Arial.ttf", 24, "sound.wav");
 
