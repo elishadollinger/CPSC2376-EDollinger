@@ -1,4 +1,3 @@
-// main.cpp
 #define SDL_MAIN_HANDLED
 #include <iostream>
 #include <SDL.h>
@@ -52,7 +51,8 @@ void drawWinScreen(Game& game, Engine& engine)
 int main()
 {
     char cwd[PATH_MAX];
-    if (getcwd(cwd, sizeof(cwd)) != nullptr) {
+    if (getcwd(cwd, sizeof(cwd)) != nullptr)
+    {
         std::cout << "Current working directory: " << cwd << std::endl;
     }
     
@@ -64,16 +64,22 @@ int main()
 
     while (running)
     {
-        while (SDL_PollEvent(&event)) {
-            if (event.type == SDL_QUIT) {
+        while (SDL_PollEvent(&event))
+        {
+            if (event.type == SDL_QUIT)
+            {
                 running = false;
             }
-            else if (event.type == SDL_KEYDOWN) {
-                if (event.key.keysym.sym == SDLK_ESCAPE) {
+            else if (event.type == SDL_KEYDOWN)
+            {
+                if (event.key.keysym.sym == SDLK_ESCAPE)
+                {
                     running = false;
                 }
-                else if (event.key.keysym.sym == SDLK_SPACE) {
-                    if (game.gameStatus() != Game::Status::ONGOING) {
+                else if (event.key.keysym.sym == SDLK_SPACE)
+                {
+                    if (game.gameStatus() != Game::Status::ONGOING)
+                    {
                         game = Game();
                     }
                 }
@@ -83,11 +89,13 @@ int main()
                 if (game.gameStatus() == Game::Status::ONGOING)
                 {
                     int mouseX = event.button.x;
-                    int mouseY = event.button.y;
                     int clickedCol = mouseX / cellSize;
-                    int clickedRow = mouseY / cellSize;
-                    game.play(clickedRow, clickedCol);
-                    engine.playSound();
+
+                    // Only allow clicking inside board
+                    if (clickedCol >= 0 && clickedCol < 7) {
+                        game.play(clickedCol);
+                        engine.playSound();
+                    }
                 }
             }
 
@@ -96,7 +104,8 @@ int main()
         engine.clear();
         game.draw(engine.getRenderer());
 
-        if (game.gameStatus() != Game::Status::ONGOING) {
+        if (game.gameStatus() != Game::Status::ONGOING)
+        {
             drawWinScreen(game, engine);
         }
 
