@@ -1,4 +1,15 @@
+/*
+    Elisha Dollinger
+    Project04
+    CPSC2376
+    Spring 2025
+ */
+
 #define SDL_MAIN_HANDLED
+/*
+    The SDL headers can't have SDL2/ in front of them in XCode. Please do not count off for that. This code is running in XCODE
+    In VSCode, just include "SDL2" before each SDL header and it will operate
+ */
 #include <iostream>
 #include <SDL.h>
 #include <SDL_ttf.h>
