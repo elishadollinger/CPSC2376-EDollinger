@@ -14,14 +14,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		E5C0222F2DB8089100D55D4D /* CopyFiles */ = {
+		E55090072DBFFC0C00511AAE /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
-			dstPath = /usr/share/man/man1/;
-			dstSubfolderSpec = 0;
+			dstPath = "";
+			dstSubfolderSpec = 16;
 			files = (
 			);
-			runOnlyForDeploymentPostprocessing = 1;
+			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -33,9 +33,22 @@
 		E5D1D3D72DBFE23C009260B3 /* project04 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = project04; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+		E55090092DBFFC2E00511AAE /* Exceptions for "project04" folder in "Copy Files" phase from "project04" target */ = {
+			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
+			buildPhase = E55090072DBFFC0C00511AAE /* CopyFiles */;
+			membershipExceptions = (
+				sound.wav,
+			);
+		};
+/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E5C022332DB8089100D55D4D /* project04 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				E55090092DBFFC2E00511AAE /* Exceptions for "project04" folder in "Copy Files" phase from "project04" target */,
+			);
 			path = project04;
 			sourceTree = "<group>";
 		};
@@ -85,7 +98,7 @@
 			buildPhases = (
 				E5C0222D2DB8089100D55D4D /* Sources */,
 				E5C0222E2DB8089100D55D4D /* Frameworks */,
-				E5C0222F2DB8089100D55D4D /* CopyFiles */,
+				E55090072DBFFC0C00511AAE /* CopyFiles */,
 			);
 			buildRules = (
 			);

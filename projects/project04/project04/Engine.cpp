@@ -1,7 +1,6 @@
 #include "Engine.h"
 #include <iostream>
 #include <stdexcept>
-#include <SDL_ttf.h>
 
 Engine::Engine(const std::string& title, int width, int height,
     const std::string& fontPath, int fontSize, const std::string& soundPath)
@@ -63,14 +62,21 @@ Engine::Engine(const std::string& title, int width, int height,
         throw std::runtime_error("TTF_OpenFont failed");
     }
 
-    sound = Mix_LoadWAV(soundPath.c_str());
-    if (!sound) {
-        std::cerr << "Failed to load sound! Mix_Error: "
-            << Mix_GetError() << std::endl;
-        // Do not throw, continue without sound.
+    // ⚡️ Fixed safer WAV loading
+    SDL_RWops* rw = SDL_RWFromFile(soundPath.c_str(), "rb");
+    if (!rw) {
+        std::cerr << "Failed to open WAV file with SDL_RWFromFile! SDL_Error: "
+            << SDL_GetError() << std::endl;
+    }
+    else {
+        sound = Mix_LoadWAV_RW(rw, 1); // 1 = auto-free rw after loading
+        if (!sound) {
+            std::cerr << "Failed to load WAV from RW! Mix_Error: "
+                << Mix_GetError() << std::endl;
+            // Do not throw, continue without sound.
+        }
     }
 }
-
 
 Engine::~Engine()
 {
@@ -87,7 +93,6 @@ Engine::~Engine()
     TTF_Quit();
     SDL_Quit();
 }
-
 
 void Engine::drawCircle(int centerX, int centerY, int radius,
     SDL_Color color)
@@ -111,8 +116,7 @@ void Engine::drawRectangle(int centerX, int centerY, int rectWidth, int rectHeig
 
 void Engine::drawText(const std::string& text, int centerX, int centerY,
     SDL_Color color)
-{;
-    // Render the text to a surface using the loaded font.
+{
     SDL_Surface* textSurface = TTF_RenderText_Blended(font, text.c_str(), color);
     if (!textSurface) {
         std::cerr << "Unable to render text surface! TTF_Error: "
@@ -120,7 +124,6 @@ void Engine::drawText(const std::string& text, int centerX, int centerY,
         return;
     }
 
-    // Create texture from surface.
     SDL_Texture* textTexture = SDL_CreateTextureFromSurface(renderer, textSurface);
     if (!textTexture) {
         std::cerr << "Unable to create texture from rendered text! SDL_Error: "
@@ -129,7 +132,6 @@ void Engine::drawText(const std::string& text, int centerX, int centerY,
         return;
     }
 
-    // Calculate destination rectangle to center the text.
     SDL_Rect destRect;
     destRect.w = textSurface->w;
     destRect.h = textSurface->h;
@@ -144,13 +146,12 @@ void Engine::drawText(const std::string& text, int centerX, int centerY,
 
 void Engine::clear(SDL_Color color)
 {
-    // Clear screen (set background to black).
     SDL_SetRenderDrawColor(getRenderer(), color.r, color.g, color.b, color.a);
     SDL_RenderClear(getRenderer());
 }
+
 void Engine::flip()
 {
-
     SDL_RenderPresent(getRenderer());
 }
 
@@ -161,5 +162,5 @@ SDL_Renderer* Engine::getRenderer() const {
 void Engine::playSound()
 {
     if (sound)
-        Mix_PlayChannel( - 1, sound, 0);
+        Mix_PlayChannel(-1, sound, 0);
 }

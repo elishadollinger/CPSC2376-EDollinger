@@ -14,7 +14,7 @@ public:
         int height = 700,
         const std::string& fontPath = "Ubuntu-Bold.ttf",
         int fontSize = 24,
-        const std::string& soundPath = "move.wav");  // Path to sound file
+        const std::string& soundPath = "sound.wav");  // Path to sound file
 
     // Destructor: Cleans up resources.
     ~Engine();

@@ -1,7 +1,3 @@
-// game.h
-#ifndef GAME_H
-#define GAME_H
-
 #include <iostream>
 #include <vector>
 #include <SDL.h>
@@ -29,5 +25,3 @@ public:
 
     friend std::ostream& operator<<(std::ostream& os, const Game& conFour);
 };
-
-#endif

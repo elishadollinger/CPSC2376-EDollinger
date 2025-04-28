@@ -1,4 +1,3 @@
-// game.cpp
 #include "Game.h"
 #include <SDL2_gfxPrimitives.h>
 
