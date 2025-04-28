@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		E52F24ED2DB95DAB00E7AF35 /* libSDL2-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C0223C2DB809A100D55D4D /* libSDL2-2.0.0.dylib */; };
+		E59DCF6C2DC0137800B075F1 /* Engine.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E59DCF672DC0137800B075F1 /* Engine.cpp */; };
+		E59DCF6D2DC0137800B075F1 /* Game.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E59DCF692DC0137800B075F1 /* Game.cpp */; };
+		E59DCF6E2DC0137800B075F1 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E59DCF6A2DC0137800B075F1 /* main.cpp */; };
+		E59DCF6F2DC0137800B075F1 /* sound.wav in CopyFiles */ = {isa = PBXBuildFile; fileRef = E59DCF6B2DC0137800B075F1 /* sound.wav */; };
 		E5D1D3D82DBFE2FB009260B3 /* libSDL2_ttf-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E53951322DB94D3000CEF743 /* libSDL2_ttf-2.0.0.dylib */; };
 		E5D1D3D92DBFE311009260B3 /* libSDL2_mixer-2.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E539514C2DB955E000CEF743 /* libSDL2_mixer-2.0.0.dylib */; };
 		E5D1D3DA2DBFE327009260B3 /* libSDL2_gfx-1.0.0.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E539514E2DB9566000CEF743 /* libSDL2_gfx-1.0.0.dylib */; };
@@ -20,6 +24,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 16;
 			files = (
+				E59DCF6F2DC0137800B075F1 /* sound.wav in CopyFiles */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -29,26 +34,21 @@
 		E53951322DB94D3000CEF743 /* libSDL2_ttf-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_ttf-2.0.0.dylib"; path = "../../../../../../../opt/homebrew/Cellar/sdl2_ttf/2.24.0/lib/libSDL2_ttf-2.0.0.dylib"; sourceTree = "<group>"; };
 		E539514C2DB955E000CEF743 /* libSDL2_mixer-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_mixer-2.0.0.dylib"; path = "../../../../../../../opt/homebrew/Cellar/sdl2_mixer/2.8.1_1/lib/libSDL2_mixer-2.0.0.dylib"; sourceTree = "<group>"; };
 		E539514E2DB9566000CEF743 /* libSDL2_gfx-1.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2_gfx-1.0.0.dylib"; path = "../../../../../../../opt/homebrew/Cellar/sdl2_gfx/1.0.4/lib/libSDL2_gfx-1.0.0.dylib"; sourceTree = "<group>"; };
+		E59DCF662DC0137800B075F1 /* Engine.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Engine.h; sourceTree = "<group>"; };
+		E59DCF672DC0137800B075F1 /* Engine.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Engine.cpp; sourceTree = "<group>"; };
+		E59DCF682DC0137800B075F1 /* Game.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Game.h; sourceTree = "<group>"; };
+		E59DCF692DC0137800B075F1 /* Game.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Game.cpp; sourceTree = "<group>"; };
+		E59DCF6A2DC0137800B075F1 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
+		E59DCF6B2DC0137800B075F1 /* sound.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = sound.wav; sourceTree = "<group>"; };
+		E59DCF702DC015FA00B075F1 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E59DCF712DC0173B00B075F1 /* connectFour.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = connectFour.png; sourceTree = "<group>"; };
 		E5C0223C2DB809A100D55D4D /* libSDL2-2.0.0.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libSDL2-2.0.0.dylib"; path = "../../../../../../../opt/homebrew/Cellar/sdl2/2.32.4/lib/libSDL2-2.0.0.dylib"; sourceTree = "<group>"; };
 		E5D1D3D72DBFE23C009260B3 /* project04 */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = project04; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
-/* Begin PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-		E55090092DBFFC2E00511AAE /* Exceptions for "project04" folder in "Copy Files" phase from "project04" target */ = {
-			isa = PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet;
-			buildPhase = E55090072DBFFC0C00511AAE /* CopyFiles */;
-			membershipExceptions = (
-				sound.wav,
-			);
-		};
-/* End PBXFileSystemSynchronizedGroupBuildPhaseMembershipExceptionSet section */
-
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		E5C022332DB8089100D55D4D /* project04 */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
-			exceptions = (
-				E55090092DBFFC2E00511AAE /* Exceptions for "project04" folder in "Copy Files" phase from "project04" target */,
-			);
 			path = project04;
 			sourceTree = "<group>";
 		};
@@ -72,6 +72,14 @@
 		E5C022282DB8089100D55D4D = {
 			isa = PBXGroup;
 			children = (
+				E59DCF682DC0137800B075F1 /* Game.h */,
+				E59DCF6B2DC0137800B075F1 /* sound.wav */,
+				E59DCF692DC0137800B075F1 /* Game.cpp */,
+				E59DCF6A2DC0137800B075F1 /* main.cpp */,
+				E59DCF702DC015FA00B075F1 /* README.md */,
+				E59DCF712DC0173B00B075F1 /* connectFour.png */,
+				E59DCF672DC0137800B075F1 /* Engine.cpp */,
+				E59DCF662DC0137800B075F1 /* Engine.h */,
 				E5C022332DB8089100D55D4D /* project04 */,
 				E5C0223B2DB809A100D55D4D /* Frameworks */,
 				E5D1D3D72DBFE23C009260B3 /* project04 */,
@@ -153,6 +161,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E59DCF6C2DC0137800B075F1 /* Engine.cpp in Sources */,
+				E59DCF6D2DC0137800B075F1 /* Game.cpp in Sources */,
+				E59DCF6E2DC0137800B075F1 /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

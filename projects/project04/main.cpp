@@ -12,6 +12,9 @@ const int cellSize = 100;
 const int width = 700;
 const int height = 600;
 
+/*
+    Centers the text for who wins and prints it when a winner is determined
+ */
 void drawWinScreen(Game& game, Engine& engine)
 {
     auto status = game.gameStatus();
@@ -47,12 +50,17 @@ void drawWinScreen(Game& game, Engine& engine)
 
 int main()
 {
+    //Include font and sound
     Engine engine("My Game", width, height, "/System/Library/Fonts/Supplemental/Arial.ttf", 24, "sound.wav");
 
     Game game;
     bool running = true;
     SDL_Event event;
 
+    /*
+        This happens while the game is running
+        Operates the code by checking mouse clicked, key down, etc
+    */
     while (running)
     {
         while (SDL_PollEvent(&event))
@@ -82,8 +90,9 @@ int main()
                     int mouseX = event.button.x;
                     int clickedCol = mouseX / cellSize;
 
-                    // Only allow clicking inside board
-                    if (clickedCol >= 0 && clickedCol < 7) {
+                    //Only allow clicking inside board
+                    if (clickedCol >= 0 && clickedCol < 7)
+                    {
                         game.play(clickedCol);
                         engine.playSound();
                     }
@@ -92,14 +101,17 @@ int main()
 
         }
 
+        //Clears the engine after the game is over
         engine.clear();
         game.draw(engine.getRenderer());
 
+        //If the game is still going, draw the win screen
         if (game.gameStatus() != Game::Status::ONGOING)
         {
             drawWinScreen(game, engine);
         }
 
+        //Show the renderer
         engine.flip();
     }
 
